@@ -1,92 +1,73 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { WithRouter } from '../withRouter/WithRouter';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  resetAllAuthForms,
+  resetPassword,
+} from './../../redux/user/user.action';
 import './style.scss';
 
 import AuthWrapper from '../authWrapper/AuthWrapper';
 import FormInput from '../forms/form_input/FormInput';
 import Button from '../forms/Button/Button';
 
-import { auth } from '../../firebase/utils';
+const mapState = ({ user }) => ({
+  resetPasswordSucces: user.resetPasswordSucces,
+  resetPasswordError: user.resetPasswordError,
+});
 
-const initialState = {
-  email: '',
-  errors: [],
-};
+const EmailPassword = (props) => {
+  const { resetPasswordSucces, resetPasswordError } = useSelector(mapState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [errors, setErrors] = useState([]);
 
-class EmailPassword extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...initialState,
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { email } = this.state;
-
-      const config = {
-        url: 'http://localhost:3000/account',
-      };
-
-      await auth
-        .sendPasswordResetEmail(email, config)
-        .then(() => {
-          console.log('password reset');
-          this.props.navigate('/account');
-        })
-        .catch(() => {
-          console.log('something went wrong');
-          const err = ['Email not found. Please try again'];
-          this.setState({
-            errors: err,
-          });
-        });
-    } catch (err) {
-      //console.log(err)
+  useEffect(() => {
+    if (resetPasswordSucces) {
+      dispatch(resetAllAuthForms());
+      navigate('/account');
     }
-  };
-  render() {
-    const { email, errors } = this.state;
+  }, [resetPasswordSucces, navigate]);
 
-    const configAuthWrapper = {
-      headline: 'Email Password',
-    };
-    return (
-      <AuthWrapper {...configAuthWrapper}>
-        <div className="formWrap">
-          {errors.length > 0 && (
-            <ul>
-              {errors.map((error, index) => {
-                return <li key={index}>{error}</li>;
-              })}
-            </ul>
-          )}
-          <form onSubmit={this.handleSubmit}>
-            <FormInput
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Email"
-              onChange={this.handleChange}
-            />
-            <Button type="submit">Email Password</Button>
-          </form>
-        </div>
-      </AuthWrapper>
-    );
-  }
-}
+  useEffect(() => {
+    if (Array.isArray(resetPasswordError) && resetPasswordError.length > 0) {
+      setErrors(resetPasswordError);
+    }
+  }, [resetPasswordError]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(resetPassword({ email }));
+  };
+
+  const configAuthWrapper = {
+    headline: 'Email Password',
+  };
+  return (
+    <AuthWrapper {...configAuthWrapper}>
+      <div className="formWrap">
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((error, index) => {
+              return <li key={index}>{error}</li>;
+            })}
+          </ul>
+        )}
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Email"
+            handleChange={(e) => setEmail(e.target.value)}
+          />
+          <Button type="submit">Email Password</Button>
+        </form>
+      </div>
+    </AuthWrapper>
+  );
+};
 
 export default WithRouter(EmailPassword);
