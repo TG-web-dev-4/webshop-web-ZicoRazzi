@@ -58,7 +58,7 @@ export function* signOutUser() {
     yield auth.signOut();
     yield put(signOutUserSucces());
   } catch (err) {
-    //console.log(err)
+    console.log(err);
   }
 }
 export function* onSignOutUserStart() {
@@ -69,11 +69,11 @@ export function* signUpUser({
   payload: { displayName, email, password, confirmPassword },
 }) {
   if (password !== confirmPassword) {
-    const err = ["Password don't match"];
+    const err = ["Password Don't match"];
     yield put(userError(err));
-
     return;
   }
+
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     const additionalData = { displayName };

@@ -1,16 +1,22 @@
 import React from 'react';
+//import { connect } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutUserStart } from '../../redux/user/user.action';
 import './styles.scss';
 import { Link, useNavigate } from 'react-router-dom';
 // import { auth } from './../../firebase/utils';
+
 const mapState = ({ user }) => ({
+  //ipv de onderste functie mapStateToProps
   currentUser: user.currentUser,
 });
+
 const Header = (props) => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
-  const { currentUser } = useSelector(mapState);
+
+  //const { currentUser } = props
+  const { currentUser } = useSelector(mapState); //ipv bovenste regel
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -27,11 +33,6 @@ const Header = (props) => {
         <div className="nav_menu">
           {currentUser && (
             <ul>
-              {/* <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/dashboard">
-                  Dashboard
-                </Link>
-              </li> */}
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Beanies
@@ -70,6 +71,11 @@ const Header = (props) => {
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Our World
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/dashboard">
+                  My Account
                 </Link>
               </li>
               <li>
@@ -129,11 +135,7 @@ const Header = (props) => {
                   Account
                 </Link>
               </li>
-              {/* <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/dashboard">
-                  Dashboard
-                </Link>
-              </li> */}
+
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Cart (0)
@@ -151,4 +153,9 @@ Header.defaultProps = {
   currentUser: null,
 };
 
-export default Header;
+// const mapStateToProps = ({ user }) => ({
+//   currentUser: user.currentUser
+// })
+
+//export default connect(mapStateToProps, null)(Header)
+export default Header; // ipv bovenste regel met connect

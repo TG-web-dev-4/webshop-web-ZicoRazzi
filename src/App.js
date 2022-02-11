@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import './default.scss';
 
 //hoc
-// import WithAuth from './hoc/WithAuth';
+import WithAuth from './hoc/WithAuth';
 
 //pages
 import Homepage from './pages/Homepage/Homepage';
@@ -39,29 +39,29 @@ const App = ({ currentUser }) => {
         <Route
           path="/registration"
           element={
-            currentUser ? (
-              <MainLayout>
-                <Homepage />
-              </MainLayout>
-            ) : (
-              <MainLayout>
-                <Registration />
-              </MainLayout>
-            )
+            // currentUser ? (
+            //   <MainLayout>
+            //     <Homepage />
+            //   </MainLayout>
+            // ) : (
+            <MainLayout>
+              <Registration />
+            </MainLayout>
+            // )
           }
         />
         <Route
           path="/account"
           element={
-            currentUser ? (
-              <MainLayout>
-                <Homepage />
-              </MainLayout>
-            ) : (
-              <MainLayout>
-                <Account />
-              </MainLayout>
-            )
+            // currentUser ? (
+            //   <MainLayout>
+            //     <Homepage />
+            //   </MainLayout>
+            // ) : (
+            <MainLayout>
+              <Account />
+            </MainLayout>
+            // )
           }
         />
         <Route
@@ -75,11 +75,11 @@ const App = ({ currentUser }) => {
         <Route
           path="/dashboard"
           element={
-            // <WithAuth>
-            <MainLayout>
-              <Dashboard />
-            </MainLayout>
-            // </WithAuth>
+            <WithAuth>
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            </WithAuth>
           }
         />
       </Routes>
