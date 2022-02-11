@@ -18,8 +18,8 @@ import Dashboard from './pages/Dashboard/Dashboard';
 //layouts
 import MainLayout from './layouts/MainLayout';
 
-const App = ({ currentUser }) => {
-  const dispatch = useDispatch();
+const App = (props) => {
+  const { setCurrentUser, currentUser } = props;
 
   useEffect(() => {
     dispatch(checkUserSession);
