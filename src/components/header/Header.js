@@ -1,11 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './styles.scss';
 import { Link } from 'react-router-dom';
 import { auth } from './../../firebase/utils';
 
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const Header = (props) => {
-  const { currentUser } = props;
+  const { currentUser } = useSelector(mapState);
   return (
     <div>
       <header className="header">
@@ -17,6 +21,46 @@ const Header = (props) => {
         <div className="nav_menu">
           {currentUser && (
             <ul>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Beanies
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Sweaters
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Le Grand Bonnet
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Gloves
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Scarves
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Gifts
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Limited
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Our World
+                </Link>
+              </li>
               <li>
                 <span
                   onClick={() => {
@@ -97,8 +141,6 @@ Header.defaultProps = {
   currentUser: null,
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
-});
 
-export default connect(mapStateToProps, null)(Header);
+
+export default Header;
