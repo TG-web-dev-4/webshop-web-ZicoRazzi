@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { WithRouter } from '../withRouter/WithRouter';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  resetAllAuthForms,
+  resetPassword,
+} from './../../redux/user/user.action';
 import './style.scss';
 
 import AuthWrapper from '../authWrapper/AuthWrapper';
@@ -7,7 +13,10 @@ import FormInput from '../forms/form_input/FormInput';
 import Button from '../forms/Button/Button';
 import { useNavigate } from 'react-router-dom';
 
-import { auth } from '../../firebase/utils';
+const mapState = ({ user }) => ({
+  resetPasswordSucces: user.resetPasswordSucces,
+  resetPasswordError: user.resetPasswordError,
+});
 
 
 

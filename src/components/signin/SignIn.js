@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './../forms/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  emailSignInStart,
+  signInWithGoogle,
+  resetAllAuthForms,
+} from '../../redux/user/user.action';
+import { useNavigate } from 'react-router-dom';
 import './style.scss';
-import { signInWithGoogle, auth } from '../../firebase/utils';
+// import { signInWithGoogle } from '../../firebase/utils';
 import { FcGoogle } from 'react-icons/fc';
 
 import FormInput from '../forms/form_input/FormInput';
 import AuthWrapper from '../authWrapper/AuthWrapper';
+import { onEmailSignInStart } from '../../redux/user/user.sagas';
 
 
 
@@ -59,6 +67,7 @@ const SignIn = (props)  => {
                 </Button>
               </div>
             </div>
+          </div>
 
             <div className="links">
               <Link to="/recovery">Reset Password</Link>

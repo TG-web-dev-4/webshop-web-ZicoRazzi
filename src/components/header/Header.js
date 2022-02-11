@@ -62,13 +62,7 @@ const Header = (props) => {
                 </Link>
               </li>
               <li>
-                <span
-                  onClick={() => {
-                    auth.signOut();
-                  }}
-                >
-                  LogOut
-                </span>
+                <span onClick={() => signOut()}>LogOut</span>
               </li>
             </ul>
           )}
@@ -124,6 +118,11 @@ const Header = (props) => {
                   Account
                 </Link>
               </li>
+              {/* <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/dashboard">
+                  Dashboard
+                </Link>
+              </li> */}
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Cart (0)

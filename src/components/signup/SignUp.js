@@ -4,6 +4,7 @@ import FormInput from '../forms/form_input/FormInput';
 import Button from '../forms/Button/Button';
 import AuthWrapper from '../authWrapper/AuthWrapper';
 import './style.scss';
+// import userTypes from '../../redux/user/user.types';
 
 
 
@@ -32,15 +33,19 @@ const reset = () => {
       const err = ["Password don't match"];
       setErrors(err)
 
-      return;
+  useEffect(() => {
+    if (Array.isArray(userErr) && userErr.length > 0) {
+      setErrors(userErr);
     }
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+  }, [userErr]);
 
-      await handleUserProfile(user, { displayName });
+  const reset = () => {
+    setDisplayName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setErrors([]);
+  };
 
       reset()
     } catch (err) {
@@ -50,19 +55,19 @@ const reset = () => {
   
     
 
-    const configAuthWrapper = {
-      headline: 'Registration',
-    };
-    return (
-      <AuthWrapper {...configAuthWrapper}>
-        <div className="formWrap">
-          {errors.length > 0 && (
-            <ul>
-              {errors.map((err, index) => {
-                return <li key={index}>{err}</li>;
-              })}
-            </ul>
-          )}
+  const configAuthWrapper = {
+    headline: 'Registration',
+  };
+  return (
+    <AuthWrapper {...configAuthWrapper}>
+      <div className="formWrap">
+        {errors.length > 0 && (
+          <ul>
+            {errors.map((err, index) => {
+              return <li key={index}>{err}</li>;
+            })}
+          </ul>
+        )}
 
           <form onSubmit={handleFormSubmit}>
             <FormInput
