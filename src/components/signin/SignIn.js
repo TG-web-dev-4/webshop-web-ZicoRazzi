@@ -1,63 +1,70 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './../forms/Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  emailSignInStart,
-  signInWithGoogle,
-  resetAllAuthForms,
-} from '../../redux/user/user.action';
-import { useNavigate } from 'react-router-dom';
 import './style.scss';
-// import { signInWithGoogle } from '../../firebase/utils';
+import { signInWithGoogle, auth } from '../../firebase/utils';
 import { FcGoogle } from 'react-icons/fc';
 
 import FormInput from '../forms/form_input/FormInput';
 import AuthWrapper from '../authWrapper/AuthWrapper';
-import { onEmailSignInStart } from '../../redux/user/user.sagas';
 
+const initialState = {
+  email: '',
+  password: '',
+};
 
+class SignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...initialState,
+    };
 
-const SignIn = (props)  => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  }
 
-   const resetForm = () => {
-    setEmail('')
-    setPassword('')
-   }
-   const handleSubmit = async (e) => {
-     e.preventDefault();
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = this.state;
 
-    
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      resetForm()
+      this.setState({
+        ...initialState,
+      });
     } catch (err) {
       //console.log(err)
     }
   };
-  
+  render() {
+    const { email, password } = this.state;
+
     const configAuthWrapper = {
       headline: 'Login',
     };
     return (
       <AuthWrapper {...configAuthWrapper}>
         <div className="formWrap">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <FormInput
               type="email"
               name="email"
               value={email}
               placeholder="Email"
-              handleChange={e => setEmail(e.target.value)}
+              handleChange={this.handleChange}
             />
             <FormInput
               type="password"
               name="password"
               value={password}
               placeholder="Password"
-              handleChange={e => setPassword(e.target.value)}
+              handleChange={this.handleChange}
             />
             <Button type="submit">LogIn</Button>
             <div className="socialSignin">
@@ -67,7 +74,6 @@ const SignIn = (props)  => {
                 </Button>
               </div>
             </div>
-          </div>
 
             <div className="links">
               <Link to="/recovery">Reset Password</Link>
@@ -77,6 +83,6 @@ const SignIn = (props)  => {
       </AuthWrapper>
     );
   }
-
+}
 
 export default SignIn;

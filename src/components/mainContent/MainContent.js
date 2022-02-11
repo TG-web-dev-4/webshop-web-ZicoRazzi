@@ -3,7 +3,7 @@ import MainImage from '../../assets/images/main_page.png';
 import LinkImage from '../../assets/images/banner.jpeg';
 import './style.scss';
 
-const MainContent = (props) => {
+const Directory = (props) => {
   return (
     <div className="main_content">
       <div className="wrap">
@@ -19,7 +19,7 @@ const MainContent = (props) => {
             backgroundImage: `url(${LinkImage})`,
           }}
         >
-          <a className="link_beanies" href="/">
+          <a className="link_beanies" href="#">
             shop beanies
           </a>
         </div>
@@ -28,4 +28,4 @@ const MainContent = (props) => {
   );
 };
 
-export default MainContent;
+export default Directory;
