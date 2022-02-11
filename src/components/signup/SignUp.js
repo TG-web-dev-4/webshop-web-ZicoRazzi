@@ -3,6 +3,8 @@ import { auth, handleUserProfile } from '../../firebase/utils';
 import FormInput from '../forms/form_input/FormInput';
 import Button from '../forms/Button/Button';
 import AuthWrapper from '../authWrapper/AuthWrapper';
+import { useNavigate } from 'react-router-dom';
+
 import './style.scss';
 
 const SignUp = (props) => {
@@ -11,6 +13,7 @@ const SignUp = (props) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const reset = () => {
     setDisplayName('');
@@ -36,6 +39,8 @@ const SignUp = (props) => {
       );
 
       await handleUserProfile(user, { displayName });
+      reset();
+      navigate('/');
     } catch (err) {
       //console.log(err)
     }
@@ -75,14 +80,14 @@ const SignUp = (props) => {
             name="password"
             value={password}
             placeholder="Password"
-            onChange={this.handleChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <FormInput
             type="password"
             name="confirmPassword"
             value={confirmPassword}
             placeholder="Confirm Password"
-            onChange={this.handleChange}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <Button type="submit">Register</Button>
         </form>
