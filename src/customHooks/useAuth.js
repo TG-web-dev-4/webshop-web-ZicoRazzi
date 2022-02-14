@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { WithRouter } from './../components/withRouter';
+import { useNavigate } from 'react-router';
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,

@@ -19,7 +19,7 @@ const Directory = (props) => {
             backgroundImage: `url(${LinkImage})`,
           }}
         >
-          <a className="link_beanies" href="#">
+          <a className="link_beanies" href="/">
             shop beanies
           </a>
         </div>
