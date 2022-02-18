@@ -3,7 +3,7 @@ import MainContent from '../../components/mainContent/MainContent';
 
 const Homepage = (props) => {
   return (
-    <section>
+    <section className="homepage">
       <MainContent />
     </section>
   );

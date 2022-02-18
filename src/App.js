@@ -14,6 +14,8 @@ import WithAdminAuth from './hoc/WithAdminAuth';
 
 //pages
 import Homepage from './pages/Homepage/Homepage';
+import Search from './pages/Search/Search'
+import Beanies from './pages/Beanies/Beanies'
 import Registration from './pages/Registration/Registration';
 import Account from './pages/Account/Account';
 import Recovery from './pages/Recovery/Recovery';
@@ -24,6 +26,7 @@ import Admin from './pages/Admin/Admin';
 import MainLayout from './layouts/MainLayout';
 import DashboardLayout from './layouts/DashboardLayout';
 import AdminLayout from './layouts/AdminLayout';
+import HomepageLayout from './layouts/HomepageLayout'
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -39,8 +42,25 @@ const App = (props) => {
         <Route
           path="/"
           element={
-            <MainLayout>
+            <HomepageLayout>
               <Homepage />
+            </HomepageLayout>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          }
+        />
+        <Route
+          // path="/store/:category"
+          path="/beanies"
+          element={
+            <MainLayout>
+              <Beanies />
             </MainLayout>
           }
         />

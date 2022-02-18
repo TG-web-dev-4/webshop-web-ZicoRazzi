@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addProductStart,
   fetchProductsStart,
   deleteProductStart,
-} from '../../redux/products/products.action';
-import Modal from './../../components/modal/Modal';
-import FormInput from './../../components/forms/form_input/FormInput';
-import FormSelect from './../../components/forms/form_select/FormSelect';
-import Button from './../../components/forms/Button/Button';
-import './styles.scss';
+} from "../../redux/products/products.action";
+import Modal from "./../../components/modal/Modal";
+import FormInput from "./../../components/forms/form_input/FormInput";
+import FormSelect from "./../../components/forms/form_select/FormSelect";
+import Button from "./../../components/forms/Button/Button";
+import "./styles.scss";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -19,9 +19,10 @@ const Admin = (props) => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
   const [hideModal, setHideModal] = useState(true);
-  const [productCategory, setProductCategory] = useState('');
-  const [productName, setProductName] = useState('');
-  const [productThumbnail, setProductThumbnail] = useState('');
+  const [productCategory, setProductCategory] = useState("");
+  const [productName, setProductName] = useState("");
+  const [productThumbnail, setProductThumbnail] = useState("");
+  const [productDesc, setProductDesc] = useState('');
   const [productPrice, setProductPrice] = useState(0);
 
   useEffect(() => {
@@ -37,9 +38,10 @@ const Admin = (props) => {
 
   const resetForm = () => {
     setHideModal(true);
-    setProductCategory('');
-    setProductName('');
-    setProductThumbnail('');
+    setProductCategory("");
+    setProductName("");
+    setProductThumbnail("");
+    setProductDesc("");
     setProductPrice(0);
   };
 
@@ -51,6 +53,7 @@ const Admin = (props) => {
         productCategory,
         productName,
         productThumbnail,
+        productDesc,
         productPrice,
       })
     );
@@ -76,20 +79,20 @@ const Admin = (props) => {
               label="Category"
               options={[
                 {
-                  value: 'beanies',
-                  name: 'Beanies',
+                  value: "beanies",
+                  name: "Beanies",
                 },
                 {
-                  value: 'sweaters',
-                  name: 'Sweaters',
+                  value: "sweaters",
+                  name: "Sweaters",
                 },
                 {
-                  value: 'gloves',
-                  name: 'Gloves',
+                  value: "gloves",
+                  name: "Gloves",
                 },
                 {
-                  value: 'scarves',
-                  name: 'Scarves',
+                  value: "scarves",
+                  name: "Scarves",
                 },
               ]}
               handleChange={(e) => setProductCategory(e.target.value)}
@@ -107,6 +110,13 @@ const Admin = (props) => {
               type="url"
               value={productThumbnail}
               handleChange={(e) => setProductThumbnail(e.target.value)}
+            />
+
+            <FormInput
+              label="Description"
+              type="text"
+              value={productDesc}
+              handleChange={(e) => setProductDesc(e.target.value)}
             />
 
             <FormInput
@@ -139,6 +149,7 @@ const Admin = (props) => {
                       const {
                         productName,
                         productThumbnail,
+                        productDesc,
                         productPrice,
                         documentID,
                       } = product;
@@ -149,6 +160,7 @@ const Admin = (props) => {
                             <img src={productThumbnail} alt="product-image" />
                           </td>
                           <td>{productName}</td>
+                          <td>{productDesc}</td>
                           <td>&euro;{productPrice}</td>
                           <td>
                             <Button

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { signOutUserStart } from '../../redux/user/user.action';
-import './styles.scss';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { signOutUserStart } from "../../redux/user/user.action";
+import "./styles.scss";
+import { Link } from "react-router-dom";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -28,7 +28,7 @@ const Header = (props) => {
           {currentUser && (
             <ul>
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/beanies">
                   Beanies
                 </Link>
               </li>
@@ -37,11 +37,11 @@ const Header = (props) => {
                   Sweaters
                 </Link>
               </li>
-              <li className="nav_menu-list">
+              {/* <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Le Grand Bonnet
                 </Link>
-              </li>
+              </li> */}
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Gloves
@@ -52,19 +52,24 @@ const Header = (props) => {
                   Scarves
                 </Link>
               </li>
-              <li className="nav_menu-list">
+              {/* <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Gifts
                 </Link>
-              </li>
-              <li className="nav_menu-list">
+              </li> */}
+              {/* <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Limited
                 </Link>
-              </li>
+              </li> */}
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Our World
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/search">
+                  Search
                 </Link>
               </li>
               <li className="nav_menu-list">
@@ -72,8 +77,15 @@ const Header = (props) => {
                   My account
                 </Link>
               </li>
-              <li>
-                <span onClick={() => signOut()}>LogOut</span>
+              <li className="nav_menu-list">
+                <Link className="nav_menu-link" to="/">
+                  Cart (0)
+                </Link>
+              </li>
+              <li className="nav_menu-list">
+                <span className="nav_menu-link" onClick={() => signOut()}>
+                  LogOut
+                </span>
               </li>
             </ul>
           )}
@@ -89,11 +101,11 @@ const Header = (props) => {
                   Sweaters
                 </Link>
               </li>
-              <li className="nav_menu-list">
+              {/* <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Le Grand Bonnet
                 </Link>
-              </li>
+              </li> */}
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Gloves
@@ -104,7 +116,7 @@ const Header = (props) => {
                   Scarves
                 </Link>
               </li>
-              <li className="nav_menu-list">
+              {/* <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Gifts
                 </Link>
@@ -113,7 +125,7 @@ const Header = (props) => {
                 <Link className="nav_menu-link" to="/">
                   Limited
                 </Link>
-              </li>
+              </li> */}
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/">
                   Our World

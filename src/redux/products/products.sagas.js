@@ -9,7 +9,7 @@ import { setProducts, fetchProductsStart } from './products.action';
 import productsTypes from './products.types';
 
 export function* addProduct({
-  payload: { productCategory, productName, productThumbnail, productPrice },
+  payload: { productCategory, productName, productThumbnail, productPrice, productDesc },
 }) {
   try {
     const timestamp = new Date();
@@ -18,6 +18,7 @@ export function* addProduct({
       productName,
       productThumbnail,
       productPrice,
+      productDesc,
       productAdminUSerUID: auth.currentUser.uid,
       createdDate: timestamp,
     });
