@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addProductStart,
   fetchProductsStart,
   deleteProductStart,
-} from "../../redux/products/products.action";
-import Modal from "./../../components/modal/Modal";
-import FormInput from "./../../components/forms/form_input/FormInput";
-import FormSelect from "./../../components/forms/form_select/FormSelect";
-import Button from "./../../components/forms/Button/Button";
-import "./styles.scss";
+} from '../../redux/products/products.action';
+import Modal from './../../components/modal/Modal';
+import FormInput from './../../components/forms/form_input/FormInput';
+import FormSelect from './../../components/forms/form_select/FormSelect';
+import Button from './../../components/forms/Button/Button';
+import LoadMore from '../../components/loadMore/LoadMore';
+import './styles.scss';
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -19,11 +20,13 @@ const Admin = (props) => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
   const [hideModal, setHideModal] = useState(true);
-  const [productCategory, setProductCategory] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productThumbnail, setProductThumbnail] = useState("");
+  const [productCategory, setProductCategory] = useState('');
+  const [productName, setProductName] = useState('');
+  const [productThumbnail, setProductThumbnail] = useState('');
   const [productDesc, setProductDesc] = useState('');
   const [productPrice, setProductPrice] = useState(0);
+
+  const { data, queryDoc, isLastPage } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart());
@@ -38,10 +41,10 @@ const Admin = (props) => {
 
   const resetForm = () => {
     setHideModal(true);
-    setProductCategory("");
-    setProductName("");
-    setProductThumbnail("");
-    setProductDesc("");
+    setProductCategory('');
+    setProductName('');
+    setProductThumbnail('');
+    setProductDesc('');
     setProductPrice(0);
   };
 
@@ -58,6 +61,19 @@ const Admin = (props) => {
       })
     );
     resetForm();
+  };
+
+  const handleLoadMore = () => {
+    dispatch(
+      fetchProductsStart({
+        startAfterDoc: queryDoc,
+        persistProducts: data,
+      })
+    );
+  };
+
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
   };
 
   return (
@@ -79,20 +95,20 @@ const Admin = (props) => {
               label="Category"
               options={[
                 {
-                  value: "beanies",
-                  name: "Beanies",
+                  value: 'beanies',
+                  name: 'Beanies',
                 },
                 {
-                  value: "sweaters",
-                  name: "Sweaters",
+                  value: 'sweaters',
+                  name: 'Sweaters',
                 },
                 {
-                  value: "gloves",
-                  name: "Gloves",
+                  value: 'gloves',
+                  name: 'Gloves',
                 },
                 {
-                  value: "scarves",
-                  name: "Scarves",
+                  value: 'scarves',
+                  name: 'Scarves',
                 },
               ]}
               handleChange={(e) => setProductCategory(e.target.value)}
@@ -145,37 +161,46 @@ const Admin = (props) => {
               <td>
                 <table border="0" cellPadding="10" cellSpacing="0">
                   <tbody className="product-content">
-                    {products.map((product, index) => {
-                      const {
-                        productName,
-                        productThumbnail,
-                        productDesc,
-                        productPrice,
-                        documentID,
-                      } = product;
+                    {Array.isArray(data) &&
+                      data.length > 0 &&
+                      data.map((product, index) => {
+                        const {
+                          productName,
+                          productThumbnail,
+                          productDesc,
+                          productPrice,
+                          documentID,
+                        } = product;
 
-                      return (
-                        <tr className="product-container">
-                          <td>
-                            <img src={productThumbnail} alt="product-image" />
-                          </td>
-                          <td>{productName}</td>
-                          <td>{productDesc}</td>
-                          <td>&euro;{productPrice}</td>
-                          <td>
-                            <Button
-                              onClick={() =>
-                                dispatch(deleteProductStart(documentID))
-                              }
-                            >
-                              Delete
-                            </Button>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                        return (
+                          <tr className="product-container">
+                            <td>
+                              <img src={productThumbnail} alt="product-image" />
+                            </td>
+                            <td>{productName}</td>
+                            <td>{productDesc}</td>
+                            <td>&euro;{productPrice}</td>
+                            <td>
+                              <Button
+                                onClick={() =>
+                                  dispatch(deleteProductStart(documentID))
+                                }
+                              >
+                                Delete
+                              </Button>
+                            </td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <td>
+                  <tr> {!isLastPage && <LoadMore {...configLoadMore} />}</tr>
+                </td>
               </td>
             </tr>
           </tbody>
