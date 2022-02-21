@@ -14,7 +14,7 @@
   }
 }
 .product {
-  border: 1px solid #000;
+  // border: 1px solid #000;
   width: 23%;
   height: 100%;
   .thumb {
@@ -31,6 +31,12 @@
     .product-name {
       font-size: 2rem;
       margin-bottom: 10px;
+    }
+    a {
+      color: #444;
+      &:hover {
+        color: orange;
+      }
     }
     .product-desc {
       line-height: 1.2;

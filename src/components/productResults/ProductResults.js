@@ -107,10 +107,7 @@ const ProductResults = ({}) => {
           //}
 
           const configProduct = {
-            productThumbnail,
-            productName,
-            productDesc,
-            productPrice,
+            ...product,
           };
 
           return <Product {...configProduct} />;
@@ -123,4 +120,3 @@ const ProductResults = ({}) => {
 };
 
 export default ProductResults;
-
