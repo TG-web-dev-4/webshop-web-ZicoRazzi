@@ -123,7 +123,7 @@ const Header = (props) => {
             
           ]}
           <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/cart">
                   {/* Cart ({calcCartQuantity(cart)}) */}
                   Cart ({totalNumCartItems})
                 </Link>

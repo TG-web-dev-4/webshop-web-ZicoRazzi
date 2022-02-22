@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addProduct } from './../../redux/cart/cart.action';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './../forms/Button/Button';
 
 const Product = (product) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { documentID, productThumbnail, productName, productPrice } = product;
   if (
     !documentID ||
@@ -23,6 +24,7 @@ const Product = (product) => {
   const handleAddToCart = (product) => {
     if (!product) return;
     dispatch(addProduct(product));
+    navigate('/cart')
   };
 
   return (

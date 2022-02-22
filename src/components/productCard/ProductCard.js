@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchProductStart,
@@ -11,13 +11,16 @@ import Button from '../forms/Button/Button';
 import './styles.scss';
 
 const mapState = (state) => ({
-  product: state.productsData.product,
+  product: state.productsData.product
+
 });
 
 const ProductCard = ({}) => {
   const { productID } = useParams();
   const { product } = useSelector(mapState);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
 
   const { productThumbnail, productName, productPrice, productDesc } = product;
 
@@ -29,6 +32,8 @@ const ProductCard = ({}) => {
     };
   }, []);
 
+  
+
   const configAddYoCartBtn = {
     type: 'button',
   };
@@ -36,6 +41,8 @@ const ProductCard = ({}) => {
   const handleAddToCart = (product) => {
     if (!product) return;
     dispatch(addProduct(product));
+    navigate('/cart')
+
   };
 
   return (

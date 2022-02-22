@@ -129,13 +129,6 @@ const Admin = (props) => {
               handleChange={(e) => setProductThumbnail(e.target.value)}
             />
 
-            {/* <FormInput
-              label="Description"
-              type="text"
-              value={productDesc}
-              handleChange={(e) => setProductDesc(e.target.value)}
-            /> */}
-
             <FormInput
               label="Price"
               type="number"
@@ -154,17 +147,8 @@ const Admin = (props) => {
         </div>
       </Modal>
       <div className="manageProducts">
-        <table>
-          <tbody>
-            <tr>
-              <th>
-                <h1>Manage Products</h1>
-              </th>
-            </tr>
-            <tr>
-              <td>
-                <table border="0" cellPadding="10" cellSpacing="0">
-                  <tbody className="product-content">
+        <h1>Manage Products</h1>
+                  <div className="product-content">
                     {Array.isArray(data) &&
                       data.length > 0 &&
                       data.map((product, index) => {
@@ -177,14 +161,21 @@ const Admin = (props) => {
                         } = product;
 
                         return (
-                          <tr className="product-container">
-                            <td>
+                          <div className="product-container">
+                            <div className="product-image">
                               <img src={productThumbnail} alt="product-image" />
-                            </td>
-                            <td>{productName}</td>
-                            <td>{productDesc}</td>
-                            <td>&euro;{productPrice}</td>
-                            <td>
+                            </div>
+                            <span className="product-name">{productName}</span>
+                            {/* <div>
+                              <span
+                                className="product-desc"
+                                dangerouslySetInnerHTML={{
+                                  __html: productDesc,
+                                }}
+                              />
+                            </div> */}
+                            <span className="product-price">&euro;{productPrice}</span>
+                            <div className="delete-btn">
                               <Button
                                 onClick={() =>
                                   dispatch(deleteProductStart(documentID))
@@ -192,23 +183,15 @@ const Admin = (props) => {
                               >
                                 Delete
                               </Button>
-                            </td>
-                          </tr>
+                            </div>
+                          </div>
                         );
                       })}
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <td>
-                  <tr> {!isLastPage && <LoadMore {...configLoadMore} />}</tr>
-                </td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+                  </div>
+                
+                  <div> {!isLastPage && <LoadMore {...configLoadMore} />}</div>
+                
       </div>
     </div>
   );
