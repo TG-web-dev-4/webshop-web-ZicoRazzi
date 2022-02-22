@@ -155,7 +155,6 @@ const Admin = (props) => {
                         const {
                           productName,
                           productThumbnail,
-                          productDesc,
                           productPrice,
                           documentID,
                         } = product;
@@ -166,14 +165,6 @@ const Admin = (props) => {
                               <img src={productThumbnail} alt="product-image" />
                             </div>
                             <span className="product-name">{productName}</span>
-                            {/* <div>
-                              <span
-                                className="product-desc"
-                                dangerouslySetInnerHTML={{
-                                  __html: productDesc,
-                                }}
-                              />
-                            </div> */}
                             <span className="product-price">&euro;{productPrice}</span>
                             <div className="delete-btn">
                               <Button
