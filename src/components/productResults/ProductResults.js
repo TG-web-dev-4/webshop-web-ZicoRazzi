@@ -12,10 +12,9 @@ const mapState = ({ productsData }) => ({
   products: productsData.products,
 });
 
-const ProductResults = ({}) => {
+const ProductResults = ({ filterType, showFilter = true }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { filterType } = useParams();
   const { products } = useSelector(mapState);
 
   const { data, queryDoc, isLastPage } = products;
@@ -82,12 +81,14 @@ const ProductResults = ({}) => {
 
   return (
     <div className="products">
+      {!showFilter && 
       <FormSelect {...configFilters} />
+      
+      }
 
       <div className="product-results">
         {data.map((product, pos) => {
           const {
-            productCategory,
             productThumbnail,
             productName,
             productDesc,
@@ -101,10 +102,6 @@ const ProductResults = ({}) => {
           )
             return null;
 
-          //if (filter && productCategory !== filter) {
-          //  console.log(filter)
-          //  console.log("test")
-          //}
 
           const configProduct = {
             ...product,

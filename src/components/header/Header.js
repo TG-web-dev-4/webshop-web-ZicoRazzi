@@ -4,6 +4,7 @@ import { signOutUserStart } from "../../redux/user/user.action";
 import { selectCartItemsCount } from './../../redux/cart/cart.selectors'
 import "./styles.scss";
 import { Link } from "react-router-dom";
+import { useNavigate} from  "react-router-dom"
 
 const mapState = ( state ) => ({
   currentUser: state.user.currentUser,
@@ -24,12 +25,17 @@ const mapState = ( state ) => ({
 
 const Header = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { currentUser, totalNumCartItems } = useSelector(mapState);
 
 // const cart = useSelector(state => state.cartData.cartItems)
 // console.log(calcCartQuantity(cart))
 
   const signOut = () => {
+    // useRoute  
+    //  if(route === '/acount') navigate('/loigin')
+
+    navigate('/')
     dispatch(signOutUserStart());
   };
 
@@ -54,12 +60,12 @@ const Header = (props) => {
               </li>,
     
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/gloves">
                   Gloves
                 </Link>
               </li>,
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/scarves">
                   Scarves
                 </Link>
               </li>,
@@ -78,6 +84,12 @@ const Header = (props) => {
                   My account
                 </Link>
               </li>,
+              <li className="nav_menu-list">
+              <Link className="nav_menu-link" to="/cart">
+                {/* Cart ({calcCartQuantity(cart)}) */}
+                Cart ({totalNumCartItems})
+              </Link>
+            </li>,
              
               <li className="nav_menu-list">
                 <span className="nav_menu-link" onClick={() => signOut()}>
@@ -122,12 +134,7 @@ const Header = (props) => {
               
             
           ]}
-          <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/cart">
-                  {/* Cart ({calcCartQuantity(cart)}) */}
-                  Cart ({totalNumCartItems})
-                </Link>
-              </li>
+          
 
           </ul>
         </div>

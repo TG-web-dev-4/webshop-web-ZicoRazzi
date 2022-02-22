@@ -8,6 +8,7 @@ import './default.scss';
 
 //components
 import AdminToolbar from './components/adminToolbar/AdminToolbar';
+import ProductResults from './components/productResults/ProductResults'
 //hoc
 import WithAuth from './hoc/WithAuth';
 import WithAdminAuth from './hoc/WithAdminAuth';
@@ -84,7 +85,23 @@ const App = (props) => {
           path="/beanies"
           element={
             <MainLayout>
-              <Beanies />
+              <ProductResults filterType="beanies" />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/scarves"
+          element={
+            <MainLayout>
+              <ProductResults filterType="scarves" />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/gloves"
+          element={
+            <MainLayout>
+              <ProductResults filterType="gloves" />
             </MainLayout>
           }
         />
