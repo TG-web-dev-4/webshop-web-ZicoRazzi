@@ -18,7 +18,6 @@ import Homepage from './pages/Homepage/Homepage';
 import Search from './pages/Search/Search';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/Cart/Cart'
-import Beanies from './pages/Beanies/Beanies';
 import Registration from './pages/Registration/Registration';
 import Account from './pages/Account/Account';
 import Recovery from './pages/Recovery/Recovery';
@@ -85,7 +84,7 @@ const App = (props) => {
           path="/beanies"
           element={
             <MainLayout>
-              <ProductResults filterType="beanies" />
+              <ProductResults filterType="beanies" bannerImageB={false}/>
             </MainLayout>
           }
         />
@@ -93,7 +92,7 @@ const App = (props) => {
           path="/scarves"
           element={
             <MainLayout>
-              <ProductResults filterType="scarves" />
+              <ProductResults filterType="scarves" bannerImageS={false}/>
             </MainLayout>
           }
         />
@@ -101,7 +100,7 @@ const App = (props) => {
           path="/gloves"
           element={
             <MainLayout>
-              <ProductResults filterType="gloves" />
+              <ProductResults filterType="gloves" bannerImageG={false}/>
             </MainLayout>
           }
         />

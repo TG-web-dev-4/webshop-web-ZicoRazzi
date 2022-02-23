@@ -1,18 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchProductsStart } from './../../redux/products/products.action';
 import FormSelect from './../forms/form_select/FormSelect';
 import LoadMore from '../loadMore/LoadMore';
 import Product from './Product';
 
 import './styles.scss';
+import BannerImageB from './../../assets/images/beanie-campagne.webp'
+import BannerImageG from './../../assets/images/banner-gloves-fingerless.webp'
+import BannerImageS from './../../assets/images/lebonnet_scarf_campaign.webp'
+import BannerImage from './../../assets/images/lebonnet_giftcard-banner.webp'
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
 });
 
-const ProductResults = ({ filterType, showFilter = true }) => {
+const ProductResults = ({ 
+  filterType, 
+  displayFilter = true, 
+  bannerImage = true,
+  bannerImageB = true,
+  bannerImageG = true,
+  bannerImageS = true
+ }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products } = useSelector(mapState);
@@ -56,11 +67,7 @@ const ProductResults = ({ filterType, showFilter = true }) => {
       {
         name: 'Gloves',
         value: 'gloves',
-      },
-      {
-        name: 'Sweaters',
-        value: 'sweaters',
-      },
+      }
     ],
     handleChange: handleFilter,
   };
@@ -81,12 +88,36 @@ const ProductResults = ({ filterType, showFilter = true }) => {
 
   return (
     <div className="products">
-      {!showFilter && 
+     
+      {!bannerImageB && 
+      <div className="banner-image"
+      style={{
+        backgroundImage: `url(${BannerImageB})`,
+      }}></div>}
+      {!bannerImageG && 
+      <div className="banner-image"
+      style={{
+        backgroundImage: `url(${BannerImageG})`,
+      }}></div>}
+      {!bannerImageS && 
+      <div className="banner-image"
+      style={{
+        backgroundImage: `url(${BannerImageS})`,
+      }}></div>}
+
+      {!bannerImage && 
+      <div className="banner-image"
+      style={{
+        backgroundImage: `url(${BannerImage})`,
+      }}></div>}
+
+      {!displayFilter && 
       <FormSelect {...configFilters} />
       
       }
 
       <div className="product-results">
+
         {data.map((product, pos) => {
           const {
             productThumbnail,
@@ -110,8 +141,10 @@ const ProductResults = ({ filterType, showFilter = true }) => {
           return <Product {...configProduct} />;
         })}
       </div>
-
+      <div className="load-more-btn">
       {!isLastPage && <LoadMore {...configLoadMore} />}
+      </div>
+      
     </div>
   );
 };

@@ -10,17 +10,6 @@ const mapState = ( state ) => ({
   currentUser: state.user.currentUser,
   totalNumCartItems: selectCartItemsCount(state)
 });
-// const mapState = ({ user }) => ({
-//   currentUser: user.currentUser,
-// });
-
-// const calcCartQuantity = (cartItems) => {
-//   let totalAmount = 0;
-//   cartItems.forEach(item => {
-//     totalAmount += item.quantity
-//   })
-//   return totalAmount
-// }
 
 
 const Header = (props) => {
@@ -28,15 +17,14 @@ const Header = (props) => {
   const navigate = useNavigate()
   const { currentUser, totalNumCartItems } = useSelector(mapState);
 
-// const cart = useSelector(state => state.cartData.cartItems)
-// console.log(calcCartQuantity(cart))
 
   const signOut = () => {
     // useRoute  
     //  if(route === '/acount') navigate('/loigin')
 
-    navigate('/')
     dispatch(signOutUserStart());
+    navigate('/')
+
   };
 
   return (

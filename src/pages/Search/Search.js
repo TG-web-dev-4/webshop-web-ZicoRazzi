@@ -8,7 +8,7 @@ const Search = ({ }) => {
   const { filterType } = useParams();
   return (
     <div className="searchPage">
-      <ProductResults showFilter={false} filterType={filterType} />
+      <ProductResults displayFilter={false} filterType={filterType} bannerImage={false}/>
     </div>
   )
 }

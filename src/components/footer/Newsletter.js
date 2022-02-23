@@ -1,17 +1,19 @@
+
+
 import React from 'react';
 import { FaIdeal, FaCcPaypal, FaCcVisa, FaCcMastercard } from 'react-icons/fa';
 
 const Newsletter = () => {
   return (
-    <section>
+    <section className="newsletter-section">
       <h2>Sign up for our newsletter</h2>
-      <form className="newslet_form">
+      <form className="newsletter_form">
         <input
-          className="newslet_form-input"
+          className="newsletter_form-input"
           type="text"
           placeholder="your@email.com"
         />
-        <button className="newslet_form-btn">SIGN UP</button>
+        <button className="newsletter_form-btn">SIGN UP</button>
       </form>
       <div className="payment_options">
         <FaIdeal />

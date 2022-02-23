@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { WithRouter } from './../withRouter/WithRouter';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   emailSignInStart,
@@ -85,5 +85,5 @@ const SignIn = (props) => {
   );
 };
 
-// export default WithRouter(SignIn);
 export default SignIn;
+

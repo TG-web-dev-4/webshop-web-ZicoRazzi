@@ -1,7 +1,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 50px 20px;
+  padding: 5rem 3rem;
   min-height: 300px;
   width: 100%;
   background-color: rgb(236, 235, 235);
@@ -19,7 +19,7 @@
     font-size: 1.2rem;
   }
 }
-.newslet_form {
+.newsletter_form {
   width: 300px;
   height: 50px;
   background-color: #fff;
@@ -52,3 +52,53 @@
   color: rgb(116, 113, 113);
   font-size: 3rem;
 }
+@media screen and (max-width: 767px){
+  .about-section,
+  .faq-section,
+  .newsletter-section,
+  .social-section
+  {
+    width: 48%;
+    padding: 2rem;
+  }
+  .footer {
+    flex-wrap: wrap;
+    gap: none;
+    padding: 3rem 1rem;
+  }
+  .newsletter_form {
+    width: 240px;
+    height: 50px;
+    
+    &-input {
+      width: 140px;
+      
+    }
+    &-btn {
+      width: 80px;
+      
+    }
+  }
+}
+@media screen and (max-width: 440px) {
+  .about-section,
+  .faq-section
+   {
+    display: none;
+  }
+  .footer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .social-section, .newsletter-section {
+    width: 100%;
+    text-align: center;
+    
+      h2{
+        line-height: 1.4;
+      }
+    
+      
+    }
+  }
+
