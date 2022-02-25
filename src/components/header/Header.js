@@ -1,30 +1,24 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { signOutUserStart } from "../../redux/user/user.action";
-import { selectCartItemsCount } from './../../redux/cart/cart.selectors'
-import "./styles.scss";
-import { Link } from "react-router-dom";
-import { useNavigate} from  "react-router-dom"
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOutUserStart } from '../../redux/user/user.action';
+import { selectCartItemsCount } from './../../redux/cart/cart.selectors';
+import './styles.scss';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const mapState = ( state ) => ({
+const mapState = (state) => ({
   currentUser: state.user.currentUser,
-  totalNumCartItems: selectCartItemsCount(state)
+  totalNumCartItems: selectCartItemsCount(state),
 });
-
 
 const Header = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { currentUser, totalNumCartItems } = useSelector(mapState);
 
-
   const signOut = () => {
-    // useRoute  
-    //  if(route === '/acount') navigate('/loigin')
-
+    navigate('/');
     dispatch(signOutUserStart());
-    navigate('/')
-
   };
 
   return (
@@ -37,16 +31,14 @@ const Header = (props) => {
         </div>
 
         <div className="nav_menu">
-        <ul>
-        
-          {currentUser && [
-            
+          <ul>
+            {currentUser && [
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/beanies">
                   Beanies
                 </Link>
               </li>,
-    
+
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/gloves">
                   Gloves
@@ -58,7 +50,7 @@ const Header = (props) => {
                 </Link>
               </li>,
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/ourworld">
                   Our World
                 </Link>
               </li>,
@@ -73,39 +65,36 @@ const Header = (props) => {
                 </Link>
               </li>,
               <li className="nav_menu-list">
-              <Link className="nav_menu-link" to="/cart">
-                {/* Cart ({calcCartQuantity(cart)}) */}
-                Cart ({totalNumCartItems})
-              </Link>
-            </li>,
-             
+                <Link className="nav_menu-link" to="/cart">
+                  Cart ({totalNumCartItems})
+                </Link>
+              </li>,
+
               <li className="nav_menu-list">
                 <span className="nav_menu-link" onClick={() => signOut()}>
                   LogOut
                 </span>
-              </li>
-            
-          ]}
-          {!currentUser && [
-            
+              </li>,
+            ]}
+            {!currentUser && [
               <li className="nav_menu-list">
                 <Link className="nav_menu-link" to="/beanies">
                   Beanies
                 </Link>
               </li>,
-          
+
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/gloves">
                   Gloves
                 </Link>
               </li>,
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/scarves">
                   Scarves
                 </Link>
               </li>,
               <li className="nav_menu-list">
-                <Link className="nav_menu-link" to="/">
+                <Link className="nav_menu-link" to="/ourworld">
                   Our World
                 </Link>
               </li>,
@@ -118,12 +107,8 @@ const Header = (props) => {
                 <Link className="nav_menu-link" to="/account">
                   Account
                 </Link>
-              </li>
-              
-            
-          ]}
-          
-
+              </li>,
+            ]}
           </ul>
         </div>
       </header>
@@ -136,3 +121,4 @@ Header.defaultProps = {
 };
 
 export default Header;
+

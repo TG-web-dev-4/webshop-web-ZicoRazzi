@@ -28,6 +28,7 @@
   align-items: center;
   border: 1px solid #444;
   margin-top: 30px;
+
   &-input {
     width: 200px;
     height: 40px;
@@ -98,6 +99,15 @@
         line-height: 1.4;
       }
     
+      
+    }
+    .newsletter-section{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .payment_options{
+        gap: 3rem;
+      }
       
     }
   }

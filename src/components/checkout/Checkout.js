@@ -1,107 +1,65 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from "react-redux";
-import { selectCartItems, selectCartTotal } from "./../../redux/cart/cart.selectors";
-import { createStructuredSelector } from "reselect";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import {
+  selectCartItems,
+  selectCartTotal,
+} from './../../redux/cart/cart.selectors';
+import { createStructuredSelector } from 'reselect';
 
-import "./styles.scss";
-import  Button from './../forms/Button/Button'
-import Item from './item/Item'
+import './styles.scss';
+import Button from './../forms/Button/Button';
+import Item from './item/Item';
 
 const mapState = createStructuredSelector({
   cartItems: selectCartItems,
-  total: selectCartTotal
+  total: selectCartTotal,
 });
 
 const Checkout = ({}) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { cartItems, total } = useSelector(mapState);
 
-  const errMsg = 'You have no items in your cart.'
+  const errMsg = 'You have no items in your cart.';
 
   return (
     <div className="checkout">
-      <h1>
-        Checkout
-      </h1>
+      <h1>Checkout</h1>
       <div className="cart">
-        {cartItems.length > 0 ? ( 
-        <table border="0" cellPadding="0" cellSpacing="0">
+        {cartItems.length > 0 ? (
+          <>
+            {/* <div className="checkoutItems">
+              <ul>
+                <li>Product</li>
+                <li>Description</li>
+                <li>Quantity</li>
+                <li>Price</li>
+                <li>Remove</li>
+              </ul>
+            </div> */}
 
-          <tbody>
-            <tr>
-              <td>
-                <table
-                  className="checkoutHeader"
-                  border="0"
-                  cellPadding="10"
-                  cellSpacing="0"
-                >
-                  <tbody>
-                    <tr>
-                      <th>Product</th>
-                      <th>Description</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                      <th>Remove</th>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
+            <div className="items">
+              {cartItems.map((item, pos) => {
+                return (
+                  <ul key={pos}>
+                    <li>
+                      <Item {...item} />
+                    </li>
+                  </ul>
+                );
+              })}
 
-            <tr>
-              <table border="0" cellPadding="0" cellSpacing="0">
-                <tbody>
-                  {cartItems.map((item, pos) => {
-                    return (
-                      <tr key={pos}>
-                        <td>
-                          <Item {...item}/>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </tr>
+              <h3 className="total-price">Total: &euro;{total}</h3>
+              <div className="cart-buttons">
+                <Button onClick={() => navigate(-1)}>Continue Shopping</Button>
 
-            <tr>
-              <table className="total" algin="right" border="0" cellSpacing="0" cellPadding="10">
-                  <tr algin="right">
-                    <td>
-                      <h3>
-                        Total: &euro;{total}
-                      </h3>
-                    </td>
-                  </tr>
-              </table>
-            </tr>
-              <table className="checkoutButtons" border="0" cellSpacing="0" cellPadding="10">
-                <tr>
-                  <td>
-                    <Button onClick={() => navigate(-1)}>
-                      Continue Shopping
-                    </Button>
-                  </td>
-                 
-                  <td>
-                    <Button>
-                      Checkout
-                    </Button>
-                  </td>
-                </tr>
-              </table>
-            <tr>
-
-            </tr>
-          </tbody>
-        </table>
-        ) : ( 
-          <p>
-            {errMsg}
-          </p>
-      )}
+                <Button>Checkout</Button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <p className="no-items-msg">{errMsg}</p>
+        )}
       </div>
     </div>
   );

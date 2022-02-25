@@ -39,11 +39,10 @@ body {
   padding: 0 10px;
   margin: 0 auto;
 }
-// .fullHeight {
-//   height: 100%;
-// }
-@media screen and (max-width: 440px) {
-  .App {
-    max-width: 100vw;
+
+@media screen and (max-width: 767px) {
+  .App{
+  width: 100%;
   }
 }
+

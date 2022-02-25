@@ -33,7 +33,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
         ...additionalData,
       });
     } catch (err) {
-      //consoloe.log(err)
+      //console.log(err)
     }
   }
   return userRef;

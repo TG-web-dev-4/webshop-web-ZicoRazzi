@@ -8,7 +8,7 @@ import './default.scss';
 
 //components
 import AdminToolbar from './components/adminToolbar/AdminToolbar';
-import ProductResults from './components/productResults/ProductResults'
+import ProductResults from './components/productResults/ProductResults';
 //hoc
 import WithAuth from './hoc/WithAuth';
 import WithAdminAuth from './hoc/WithAdminAuth';
@@ -17,7 +17,8 @@ import WithAdminAuth from './hoc/WithAdminAuth';
 import Homepage from './pages/Homepage/Homepage';
 import Search from './pages/Search/Search';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
-import Cart from './pages/Cart/Cart'
+import Cart from './pages/Cart/Cart';
+import OurWorld from './pages/OurWorld/OurWorld';
 import Registration from './pages/Registration/Registration';
 import Account from './pages/Account/Account';
 import Recovery from './pages/Recovery/Recovery';
@@ -84,7 +85,7 @@ const App = (props) => {
           path="/beanies"
           element={
             <MainLayout>
-              <ProductResults filterType="beanies" bannerImageB={false}/>
+              <ProductResults filterType="beanies" bannerImageB={false} />
             </MainLayout>
           }
         />
@@ -92,7 +93,7 @@ const App = (props) => {
           path="/scarves"
           element={
             <MainLayout>
-              <ProductResults filterType="scarves" bannerImageS={false}/>
+              <ProductResults filterType="scarves" bannerImageS={false} />
             </MainLayout>
           }
         />
@@ -100,7 +101,15 @@ const App = (props) => {
           path="/gloves"
           element={
             <MainLayout>
-              <ProductResults filterType="gloves" bannerImageG={false}/>
+              <ProductResults filterType="gloves" bannerImageG={false} />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/ourworld"
+          element={
+            <MainLayout>
+              <OurWorld />
             </MainLayout>
           }
         />
@@ -150,7 +159,6 @@ const App = (props) => {
         />
       </Routes>
       <AdminToolbar />
-
     </div>
   );
 };
