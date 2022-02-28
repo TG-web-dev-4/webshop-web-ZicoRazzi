@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 import {
   emailSignInStart,
   googleSignInStart,
 } from '../../redux/user/user.action';
 
-import Button from './../forms/Button/Button';
 import './style.scss';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -67,12 +65,15 @@ const SignIn = (props) => {
             placeholder="Password"
             handleChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit">LogIn</Button>
+          <button type="submit" className="login-btn">
+            LogIn
+          </button>
           <div className="socialSignin">
             <div className="row">
-              <Button onClick={handleGoogleSignIn} className="btn">
-                <FcGoogle className="google_icon" /> Google
-              </Button>
+              
+              <button onClick={handleGoogleSignIn} className="login-btn">
+                <FcGoogle className="google-icon" /> Google
+              </button>
             </div>
           </div>
 

@@ -5,12 +5,12 @@ import LinkImageS from '../../assets/images/scarves_2.jpg';
 import LinkImageG from '../../assets/images/gloves_3.jpg';
 import './style.scss';
 
-const Directory = (props) => {
+const MainContent = (props) => {
   return (
-    <div className="main_content">
+    <div className="mainContent">
       <div className="wrap">
         <div
-          className="main_image"
+          className="main-image"
           style={{
             backgroundImage: `url(${MainImage})`,
           }}
@@ -18,33 +18,33 @@ const Directory = (props) => {
 
         <div className="link-banner-container">
           <div
-            className="link_image"
+            className="link-image"
             style={{
               backgroundImage: `url(${LinkImageS})`,
               backgroundSize: 'cover',
             }}
           >
-            <a className="link_products" href="/scarves">
+            <a className="link-products" href="/scarves">
               shop scarves
             </a>
           </div>
           <div
-            className="link_image"
+            className="link-image"
             style={{
               backgroundImage: `url(${LinkImageB})`,
             }}
           >
-            <a className="link_products" href="/beanies">
+            <a className="link-products" href="/beanies">
               shop beanies
             </a>
           </div>
           <div
-            className="link_image"
+            className="link-image"
             style={{
               backgroundImage: `url(${LinkImageG})`,
             }}
           >
-            <a className="link_products" href="/gloves">
+            <a className="link-products" href="/gloves">
               shop gloves
             </a>
           </div>
@@ -54,5 +54,5 @@ const Directory = (props) => {
   );
 };
 
-export default Directory;
+export default MainContent;
 

@@ -6,7 +6,7 @@ import './styles.scss';
 const About = () => {
   return (
     <div className="about">
-      <div className="story">
+      <div className="story-content">
         <div
           className="campaign-image"
           style={{
@@ -28,7 +28,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <div className="process">
+      <div className="process-content">
         <div className="process-text">
           <h1>THE PROCESS</h1>
 

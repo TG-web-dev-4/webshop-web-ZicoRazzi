@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  .story,
-  .process {
+  .story-content,
+  .process-content {
     display: flex;
     width: 100%;
   }
@@ -34,70 +34,83 @@
 }
 
 @media screen and (max-width: 767px) {
-  .about{
+  .about {
     .campaign-image,
-  .story-text,
-  .process-text,
-  .process-image {
-    width: 50%;
-    height: 500px;
-  }
-  .campaign-image,
-  .process-image {
-    background: no-repeat;
-    background-size: cover;
-  }
-  .story-text,
-  .process-text {
-    text-align: center;
-    padding: 3rem;
-    h1 {
-      margin: 2rem auto;
-      font-size: 2.2rem;
+    .story-text,
+    .process-text,
+    .process-image {
+      width: 50%;
+      height: 500px;
     }
-    p {
-      margin: 2rem auto;
-      line-height: 1.4;
-      letter-spacing: 1.1px;
-      font-size: 1.2rem;
+    .campaign-image,
+    .process-image {
+      background: no-repeat;
+      background-size: cover;
     }
-  }
-  .story-text {
-    padding: 8rem;
-  }
+    .story-text,
+    .process-text {
+      text-align: center;
+      padding: 3rem;
+      h1 {
+        margin: 2rem auto;
+        font-size: 2.2rem;
+      }
+      p {
+        margin: 2rem auto;
+        line-height: 1.4;
+        letter-spacing: 1.1px;
+        font-size: 1.2rem;
+      }
+    }
+    .story-text {
+      padding: 8rem;
+    }
   }
 }
 @media screen and (max-width: 440px) {
-  .about{
-    .story,
-  .process {
-flex-direction: column;    
-  }
-  .campaign-image,
-  .story-text,
-  .process-text,
-  .process-image {
-    width: 100%;
-    height: 380px;
-  }
- 
-  .story-text,
-  .process-text {
-    text-align: center;
-    padding: 0;
-    h1 {
-      margin: 2rem auto;
-      font-size: 2.2rem;
+  .about {
+    .story-content,
+    .process-content {
+      flex-direction: column;
     }
-    p {
-      margin: 2rem auto;
-      line-height: 1.4;
-      letter-spacing: 1.1px;
-      font-size: 1.2rem;
+    .campaign-image,
+    .story-text,
+    .process-text,
+    .process-image {
+      width: 100%;
+      height: 380px;
+    }
+
+    .story-text,
+    .process-text {
+      text-align: center;
+      padding: 0;
+      h1 {
+        margin: 2rem auto;
+        font-size: 2.2rem;
+      }
+      p {
+        margin: 2rem auto;
+        line-height: 1.4;
+        letter-spacing: 1.1px;
+        font-size: 1.2rem;
+      }
+    }
+    .story-text {
+      padding: 2rem;
     }
   }
-  .story-text {
-    padding: 2rem;
-  }
+}
+@media screen and (max-width: 360px) {
+  .about {
+    .story-text,
+    .process-text {
+      p {
+        font-size: 1.1rem;
+      }
+    }
+    .story-text {
+      padding: 3rem 2rem;
+    }
   }
 }
