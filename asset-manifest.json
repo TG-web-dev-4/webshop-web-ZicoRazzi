@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/css/main.c68da967.css",
+    "main.js": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/js/main.67ea69e1.js",
+    "static/media/gloves_3.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/gloves_3.0385542cdb5d862feca7.jpg",
+    "static/media/usercat.png": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/usercat.d5b3707149475020ff91.png",
+    "static/media/beanie-campagne.webp": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/beanie-campagne.bcf47970e9f9a5645d4b.webp",
+    "static/media/lebonnet_giftcard-banner.webp": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/lebonnet_giftcard-banner.d591c11da8faf8f19f7e.webp",
+    "static/media/campaign_1.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/campaign_1.b821aa6c7ceca8fe978e.jpg",
+    "static/media/scarves_2.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/scarves_2.ca1bfdc7f4ea055f0084.jpg",
+    "static/media/banner-gloves-fingerless.webp": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/banner-gloves-fingerless.92482a336fb3528874c4.webp",
+    "static/media/lebonnet_scarf_campaign.webp": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/lebonnet_scarf_campaign.3236d48d1375dbd36819.webp",
+    "static/media/knitting-machines.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/knitting-machines.796e1ba3bd75cd96506d.jpg",
+    "static/media/campaign_3.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/campaign_3.81eb2f3d90d9ae8b3dc5.jpg",
+    "static/media/account-bg-2.png": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/account-bg-2.089e0529cfd51fc3cb10.png",
+    "static/media/beanies.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/beanies.d6a86ed9c82e84518140.jpg",
+    "static/media/account-bg.jpg": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/media/account-bg.ee5252c844b7bc3f7345.jpg",
+    "index.html": "/TG-web-dev-4/webshop-web-ZicoRazzi/index.html",
+    "main.c68da967.css.map": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/css/main.c68da967.css.map",
+    "main.67ea69e1.js.map": "/TG-web-dev-4/webshop-web-ZicoRazzi/static/js/main.67ea69e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c68da967.css",
+    "static/js/main.67ea69e1.js"
+  ]
+}
