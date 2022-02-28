@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/webshop-web-ZicoRazzi/static/css/main.e54b0918.css",
-    "main.js": "/webshop-web-ZicoRazzi/static/js/main.1bd6e5ac.js",
+    "main.js": "/webshop-web-ZicoRazzi/static/js/main.a5fbcc51.js",
     "static/media/gloves_3.jpg": "/webshop-web-ZicoRazzi/static/media/gloves_3.0385542cdb5d862feca7.jpg",
     "static/media/usercat.png": "/webshop-web-ZicoRazzi/static/media/usercat.d5b3707149475020ff91.png",
     "static/media/beanie-campagne.webp": "/webshop-web-ZicoRazzi/static/media/beanie-campagne.bcf47970e9f9a5645d4b.webp",
@@ -17,10 +17,10 @@
     "static/media/account-bg.jpg": "/webshop-web-ZicoRazzi/static/media/account-bg.ee5252c844b7bc3f7345.jpg",
     "index.html": "/webshop-web-ZicoRazzi/index.html",
     "main.e54b0918.css.map": "/webshop-web-ZicoRazzi/static/css/main.e54b0918.css.map",
-    "main.1bd6e5ac.js.map": "/webshop-web-ZicoRazzi/static/js/main.1bd6e5ac.js.map"
+    "main.a5fbcc51.js.map": "/webshop-web-ZicoRazzi/static/js/main.a5fbcc51.js.map"
   },
   "entrypoints": [
     "static/css/main.e54b0918.css",
-    "static/js/main.1bd6e5ac.js"
+    "static/js/main.a5fbcc51.js"
   ]
 }
