@@ -1,0 +1,22 @@
+.formRow {
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 10px auto;
+    font-weight: 400;
+    text-align: left;
+    outline: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #444;
+    &::placeholder,
+    &:active,
+    &:focus,
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      color: #444;
+    }
+  }
+}

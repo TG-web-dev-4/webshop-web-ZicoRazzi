@@ -1,0 +1,36 @@
+.formRow {
+  display: inline-block;
+  width: 100%;
+
+  label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+  }
+
+  select {
+    display: block;
+    width: auto;
+    float: left;
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 400;
+    text-align: left;
+    padding: 10px;
+    margin: 5px auto;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    text-transform: uppercase;
+    color: #444;
+    font-family: 'Cantata One', serif;
+
+    &:hover {
+      background-color: #444;
+      color: #fff;
+    }
+  }
+}
+
